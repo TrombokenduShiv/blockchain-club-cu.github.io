@@ -1,21 +1,14 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import { Inter } from 'next/font/google';
 import './globals.css';
+import { ThemeProvider } from './providers'; // Import the new provider
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-});
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Blockchain Club CU',
-  description: 'Official website of Blockchain Club CU',
+  title: 'BCCU | Blockchain Club Chandigarh University',
+  description:
+    'A student-led community focused on learning Blockchain and Web3.',
 };
 
 export default function RootLayout({
@@ -24,11 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    // 1. Add suppressHydrationWarning
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        {/* 2. Wrap children in ThemeProvider */}
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

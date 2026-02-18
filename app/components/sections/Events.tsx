@@ -12,7 +12,7 @@ export const Events = () => {
   return (
     <section
       id="events"
-      className="py-24 bg-[#1C1C1C] relative border-t border-white/5"
+      className="py-24 bg-white dark:bg-[#1C1C1C] relative border-t border-white/5"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader title="UPCOMING EVENTS" subtitle="Join The Action" />
@@ -23,22 +23,22 @@ export const Events = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center justify-center text-center py-20 px-6 border border-dashed border-white/10 rounded-xl bg-white/5"
+            className="flex flex-col items-center justify-center text-center py-20 px-6 border border-dashed border-black/10 dark:border-gray-200 dark:border-white/10 rounded-xl bg-white/5"
           >
             <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-6 text-gray-500">
               <CalendarOff size={32} />
             </div>
-            <h3 className="text-xl md:text-2xl font-bold font-mono text-white mb-2">
+            <h3 className="text-xl md:text-2xl font-bold font-mono text-gray-900 dark:text-white mb-2">
               No Upcoming Events
             </h3>
-            <p className="text-gray-400 max-w-md mb-8">
+            <p className="text-gray-600 dark:text-gray-400 max-w-md mb-8">
               We are currently brewing something special for the next semester.
               Join our WhatsApp community to be the first to know when we
               launch!
             </p>
             <a
               href="#contact" // Or link to your Discord/WhatsApp
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#10F480]/10 text-[#10F480] border border-[#10F480]/20 rounded hover:bg-[#10F480] hover:text-black transition-all duration-300 font-mono font-bold text-sm"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#10F480]/10 text-emerald-600 dark:text-[#10F480] border border-[#10F480]/20 rounded hover:bg-[#10F480] hover:text-black dark:hover:text-[#1C1C1C] transition-all duration-300 font-mono font-bold text-sm"
             >
               <Bell size={16} />
               Join Community
@@ -54,11 +54,11 @@ export const Events = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group relative bg-[#111] border border-white/10 rounded-xl overflow-hidden hover:border-[#10F480] transition-colors duration-300"
+                className="group relative border border-gray-200 dark:border-white/10 rounded-xl bg-gray-50 dark:bg-white/5 hover:border-emerald-500 dark:hover:border-[#10F480]/50 hover:bg-white dark:hover:bg-white/10 transition-colors duration-300 shadow-sm dark:shadow-none"
               >
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10F480]/10 text-[#10F480] text-xs font-mono">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10F480]/10 text-emerald-600 dark:text-[#10F480] text-xs font-mono">
                       <Calendar size={12} />
                       {event.date}
                     </div>
@@ -67,10 +67,10 @@ export const Events = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mb-2 font-mono group-hover:text-[#10F480] transition-colors">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2 font-mono group-hover:text-emerald-600 dark:text-[#10F480] dark:group-hover:text-[#10F480] transition-colors">
                     {event.title}
                   </h3>
-                  <p className="text-gray-400 mb-6 text-sm line-clamp-2">
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm line-clamp-2">
                     {event.description}
                   </p>
 
@@ -80,7 +80,7 @@ export const Events = () => {
                     </span>
                   </div>
 
-                  <button className="w-full py-3 border border-white/20 text-white font-mono text-sm hover:bg-[#10F480] hover:text-black hover:border-[#10F480] transition-all duration-300 rounded">
+                  <button className="w-full py-3 border border-gray-600 dark:border-white/20 text-gray-900 dark:text-white font-mono text-sm hover:bg-[#10F480] hover:text-black dark:hover:text-[#1C1C1C] hover:border-[#10F480] transition-all duration-300 rounded">
                     REGISTER NOW
                   </button>
                 </div>

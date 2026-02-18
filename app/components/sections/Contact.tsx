@@ -5,12 +5,12 @@ export const Connect = () => {
   return (
     <section
       id="contact"
-      className="py-24 bg-[#1C1C1C] relative border-t border-white/5"
+      className="py-24 bg-white dark:bg-[#1C1C1C] relative border-t border-white/5"
     >
       <div className="max-w-4xl mx-auto px-4 text-center">
         <SectionHeader title="CONNECT WITH US" subtitle="Join The Community" />
 
-        <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
+        <p className="text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
           Whether you are a complete beginner or a Web3 native, our doors are
           always open. Join our socials to stay updated.
         </p>
@@ -39,17 +39,17 @@ export const Connect = () => {
               icon: Mail,
               label: 'Email',
               href: 'mailto:contact@bccu.com',
-              color: 'hover:text-gray-100',
+              color: 'hover:text-red-500 ',
             },
           ].map((item, i) => (
             <a
               key={i}
               href={item.href}
-              className={`flex flex-col items-center justify-center p-6 border border-white/10 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 group ${item.color}`}
+              className={`flex flex-col items-center justify-center p-6 border border-black/10 dark:border-gray-200 dark:border-white/10 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 group ${item.color}`}
             >
               <item.icon
                 size={32}
-                className="mb-3 text-gray-300 group-hover:text-inherit transition-colors"
+                className="mb-3 text-gray-600 dark:text-gray-300 group-hover:text-inherit transition-colors"
               />
               <span className="font-mono text-sm">{item.label}</span>
             </a>

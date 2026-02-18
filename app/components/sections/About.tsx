@@ -8,7 +8,7 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="py-24 bg-[#1C1C1C] relative border-t border-white/5"
+      className="py-24 bg-white dark:bg-[#1C1C1C] relative border-t border-gray-200 dark:border-white/5 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader title="WHO WE ARE" subtitle="Our Mission" />
@@ -19,11 +19,12 @@ export const About = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="font-light text-gray-300 text-lg leading-relaxed"
+            // FIX 1: darker text for light mode (gray-700)
+            className="font-light text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
           >
             <p className="mb-6">
-              The{' '}
-              <span className="text-[#10F480]">
+              The {/* FIX 2: Darker green (emerald-600) for Light Mode */}
+              <span className="font-semibold text-emerald-600 dark:text-[#10F480]">
                 Blockchain Club Chandigarh University
               </span>{' '}
               is a student-driven ecosystem dedicated to demystifying
@@ -44,13 +45,13 @@ export const About = () => {
             viewport={{ once: true }}
             className="relative h-64 md:h-full min-h-[300px] flex items-center justify-center"
           >
-            {/* Optimized Glow */}
-            <div className="absolute w-64 h-64 bg-[#10F480]/10 rounded-full blur-[80px] pointer-events-none translate-z-0" />
+            {/* Glow Effect */}
+            <div className="absolute w-64 h-64 bg-emerald-500/20 dark:bg-[#10F480]/10 rounded-full blur-[80px] pointer-events-none translate-z-0" />
 
             <img
               src="/logo.png"
               alt="About BCCU"
-              className="relative z-10 w-64 h-64 object-contain drop-shadow-[0_0_30px_rgba(16,244,128,0.2)] opacity-80 hover:opacity-100 transition-opacity duration-500"
+              className="relative z-10 w-64 h-64 object-contain drop-shadow-[0_0_30px_rgba(16,244,128,0.2)] opacity-90 hover:opacity-100 transition-opacity duration-500"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.onerror = null;
@@ -70,12 +71,16 @@ export const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-6 border border-white/10 rounded bg-white/5 hover:border-[#10F480]/50 hover:bg-white/10 transition-colors duration-300"
+              // FIX 3: Better card background and border for Light Mode
+              className="p-6 border border-gray-200 dark:border-gray-200 dark:border-white/10 rounded-xl bg-gray-50 dark:bg-white/5 hover:border-emerald-500 dark:hover:border-[#10F480]/50 hover:bg-white dark:hover:bg-white/10 transition-colors duration-300 shadow-sm dark:shadow-none"
             >
-              <h3 className="text-xl font-mono font-bold text-white mb-3">
+              {/* FIX 4: Darker Green Title for Light Mode */}
+              <h3 className="text-xl font-mono font-bold text-emerald-700 dark:text-white mb-3">
                 {card.title}
               </h3>
-              <p className="text-gray-400 text-sm">{card.description}</p>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                {card.description}
+              </p>
             </motion.div>
           ))}
         </div>

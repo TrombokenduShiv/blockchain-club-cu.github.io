@@ -10,7 +10,7 @@ import { Team } from './components/sections/Team';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#1C1C1C] text-white selection:bg-[#10F480] selection:text-[#1C1C1C]">
+    <div className="min-h-screen bg-white dark:bg-[#1C1C1C] text-gray-900 dark:text-white selection:bg-[#10F480] selection:text-[#1C1C1C]">
       <Navbar />
       <Hero />
       <About />

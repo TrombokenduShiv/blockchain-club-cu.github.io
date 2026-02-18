@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="bg-[#1C1C1C] border-t border-white/10 py-12">
+    <footer className="bg-white dark:bg-[#1C1C1C] border-t border-black/10 dark:border-gray-200 dark:border-white/10 py-12">
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2">
           <img
@@ -13,7 +13,9 @@ export const Footer = () => {
                 'https://placehold.co/128x128/10F480/1C1C1C?text=B';
             }}
           />
-          <span className="text-white font-mono font-bold">BCCU.</span>
+          <span className="text-gray-900 dark:text-gray-900 dark:text-white font-mono font-bold">
+            BCCU.
+          </span>
         </div>
 
         <div className="text-gray-500 text-xs font-mono text-center md:text-right">

@@ -22,41 +22,13 @@ interface AboutItem {
 }
 
 export const TEAM_MEMBERS: MemberItem[] = [
-  {
-    id: 1,
-    name: 'Alex Johnson',
-    role: 'President',
-    image: '/api/placeholder/400/400', // Replace with real image path
-    linkedin: '#',
-  },
-  {
-    id: 2,
-    name: 'Sarah Chen',
-    role: 'Tech Lead',
-    image: '/api/placeholder/400/400',
-    linkedin: '#',
-  },
-  {
-    id: 3,
-    name: 'Mike Ross',
-    role: 'Event Manager',
-    image: '/api/placeholder/400/400',
-    linkedin: '#',
-  },
-  {
-    id: 4,
-    name: 'Priya Patel',
-    role: 'Marketing Head',
-    image: '/api/placeholder/400/400',
-    linkedin: '#',
-  },
-  {
-    id: 5,
-    name: 'Test test',
-    role: 'Marketing Head',
-    image: '/api/placeholder/400/400',
-    linkedin: '#',
-  },
+  // {
+  //   id: 1,
+  //   name: 'Alex Johnson',
+  //   role: 'President',
+  //   image: '/api/placeholder/400/400', // Replace with real image path
+  //   linkedin: '#',
+  // },
 ];
 
 export const EVENTS: EventItem[] = [
@@ -69,16 +41,6 @@ export const EVENTS: EventItem[] = [
   //   description:
   //     'Learn the basics of Solidity and deploy your first smart contract on the Ethereum testnet.',
   //   status: 'Upcoming',
-  // },
-  // {
-  //   id: 2,
-  //   title: 'Web3 Career Roadmap',
-  //   date: 'March 22, 2024',
-  //   time: '5:00 PM',
-  //   location: 'Virtual (Discord)',
-  //   description:
-  //     'Industry experts share insights on how to land a job in the Web3 ecosystem.',
-  //   status: 'Registration Open',
   // },
 ];
 
