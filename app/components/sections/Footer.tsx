@@ -8,9 +8,9 @@ export const Footer = () => {
             alt="Logo"
             className="w-8 h-8 object-contain opacity-80"
             onError={(e) => {
-              e.target.onerror = null;
-              e.target.src =
-                'https://placehold.co/128x128/10F480/1C1C1C?text=B';
+              const target = e.target as HTMLImageElement;
+              target.onerror = null;
+              target.src = 'https://placehold.co/128x128/10F480/1C1C1C?text=B';
             }}
           />
           <span className="text-gray-900 dark:text-gray-900 dark:text-white font-mono font-bold">
