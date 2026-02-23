@@ -20,25 +20,25 @@ export const Connect = () => {
             {
               icon: MessageCircle,
               label: 'WhatsApp',
-              href: '#',
+              href: 'https://chat.whatsapp.com/CXY53ovXAas7bWBfwRnEsa?utm_source=website',
               color: 'hover:text-green-500',
             },
             {
               icon: Linkedin,
               label: 'LinkedIn',
-              href: '#',
+              href: 'https://linkedin.com/company/blockchain-club-cu?utm_source=website',
               color: 'hover:text-blue-500',
             },
             {
               icon: Instagram,
               label: 'Instagram',
-              href: '#',
+              href: 'https://www.instagram.com/blockchainclub_cu/?utm_source=website',
               color: 'hover:text-pink-500',
             },
             {
               icon: Mail,
               label: 'Email',
-              href: 'mailto:contact@bccu.com',
+              href: 'mailto:cublockchainclub@gmail.com',
               color: 'hover:text-red-500 ',
             },
           ].map((item, i) => (
