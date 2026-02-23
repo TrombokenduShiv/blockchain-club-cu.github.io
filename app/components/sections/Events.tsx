@@ -4,8 +4,12 @@ import { motion } from 'framer-motion';
 import { Calendar, MapPin, CalendarOff, Bell } from 'lucide-react'; // Added CalendarOff and Bell
 import { SectionHeader } from '../ui/SectionHeader';
 import { EVENTS } from '@/app/data/constants';
+import Image from 'next/image';
+import { useTheme } from 'next-themes';
 
 export const Events = () => {
+  const { theme, setTheme } = useTheme();
+  
   // Check if events exist
   const hasEvents = EVENTS && EVENTS.length > 0;
 
@@ -74,15 +78,21 @@ export const Events = () => {
                     {event.description}
                   </p>
 
+                  <div className="flex justify-center relative h-60 w-full mb-8">
+                    <Image src={theme === 'dark' ? event.imageDarkURL : event.imageURL} alt={event.title} fill className="object-contain" />
+                  </div>
+
                   <div className="flex items-center gap-4 text-sm text-gray-500 font-mono mb-6">
                     <span className="flex items-center gap-1">
                       <MapPin size={14} /> {event.location}
                     </span>
                   </div>
 
-                  <button className="w-full py-3 border border-gray-600 dark:border-white/20 text-gray-900 dark:text-white font-mono text-sm hover:bg-[#10F480] hover:text-black dark:hover:text-[#1C1C1C] hover:border-[#10F480] transition-all duration-300 rounded">
-                    REGISTER NOW
-                  </button>
+                  <a href={event.link} >
+                    <button className="w-full py-3 border border-gray-600 dark:border-white/20 text-gray-900 dark:text-white font-mono text-sm hover:bg-[#10F480] hover:text-black dark:hover:text-[#1C1C1C] hover:border-[#10F480] transition-all duration-300 rounded">
+                      REGISTER NOW
+                    </button>
+                  </a>
                 </div>
               </motion.div>
             ))}

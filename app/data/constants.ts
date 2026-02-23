@@ -1,11 +1,14 @@
 interface EventItem {
   id: number;
   title: string;
+  imageURL: string;
+  imageDarkURL: string;
   date: string;
   time: string;
   location: string;
   description: string;
   status: string;
+  link: string;
 }
 
 interface MemberItem {
@@ -17,7 +20,7 @@ interface MemberItem {
 }
 
 interface AboutItem {
-  titie: string;
+  title: string;
   description?: string;
 }
 
@@ -32,16 +35,20 @@ export const TEAM_MEMBERS: MemberItem[] = [
 ];
 
 export const EVENTS: EventItem[] = [
-  // {
-  //   id: 1,
-  //   title: 'Intro to Smart Contracts',
-  //   date: 'March 15, 2024',
-  //   time: '2:00 PM - 4:00 PM',
-  //   location: 'Block 3, Room 405',
-  //   description:
-  //     'Learn the basics of Solidity and deploy your first smart contract on the Ethereum testnet.',
-  //   status: 'Upcoming',
-  // },
+  {
+    id: 1,
+    title: `TRANSFORMING INDUSTRY PAIN-POINTS INTO STARTUP SOLUTIONS WITH AI & BLOCKCHAIN`,
+    imageURL: 'event_posters/TransformingIndustry_26_02_2026_light.png',
+    imageDarkURL: 'event_posters/TransformingIndustry_26_02_2026_dark.png',
+    date: 'February 26, 2026',
+    time: '9:00 AM - 4:30 PM',
+    location: 'B3, Seminar Hall',
+    description:
+      `Learn how real-world industry problems can be turned into scalable startup
+ideas using AI and Blockchain technologies.`,
+    status: 'Upcoming',
+    link: 'https://docs.google.com/forms/d/e/1FAIpQLSeL0Fw4Mo3nC54h2HQJEQNrVeHbKJp6yqog3waiyMY78ouDQA/viewform',
+  },
 ];
 
 export const ABOUT_CARDS = [
