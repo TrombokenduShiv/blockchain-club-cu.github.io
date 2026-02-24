@@ -6,10 +6,18 @@ import { SectionHeader } from '../ui/SectionHeader';
 import { EVENTS } from '@/app/data/constants';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 export const Events = () => {
-  const { theme, setTheme } = useTheme();
-  
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   // Check if events exist
   const hasEvents = EVENTS && EVENTS.length > 0;
 
@@ -79,7 +87,16 @@ export const Events = () => {
                   </p>
 
                   <div className="flex justify-center relative h-60 w-full mb-8">
-                    <Image src={theme === 'dark' ? event.imageDarkURL : event.imageURL} alt={event.title} fill className="object-contain" />
+                    <Image
+                      src={
+                        theme === 'dark' && event.imageDarkURL
+                          ? event.imageDarkURL
+                          : event.imageURL
+                      }
+                      alt={event.title}
+                      fill
+                      className="object-contain"
+                    />
                   </div>
 
                   <div className="flex items-center gap-4 text-sm text-gray-500 font-mono mb-6">
