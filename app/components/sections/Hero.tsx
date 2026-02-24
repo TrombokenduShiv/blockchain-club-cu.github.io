@@ -52,16 +52,22 @@ export const Hero = () => {
             transition={{ delay: 1.2, duration: 0.5 }}
             className="flex flex-wrap items-center justify-center gap-4 mt-8 w-full"
           >
-            <button className="group relative px-8 py-4 bg-[#10F480] text-[#1C1C1C] font-bold font-mono rounded hover:bg-[#0dd66f] transition-all duration-300 overflow-hidden w-full sm:w-auto text-center shadow-[0_0_20px_rgba(16,244,128,0.3)] hover:shadow-[0_0_30px_rgba(16,244,128,0.5)]">
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                REGISTER NOW
-                <ArrowRight
-                  size={18}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
-              </span>
-              <div className="absolute inset-0 bg-white/40 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out skew-y-12"></div>
-            </button>
+            <a
+              href="https://chat.whatsapp.com/CXY53ovXAas7bWBfwRnEsa?utm_source=website"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="group relative px-8 py-4 bg-[#10F480] text-[#1C1C1C] font-bold font-mono rounded hover:bg-[#0dd66f] transition-all duration-300 overflow-hidden w-full sm:w-auto text-center shadow-[0_0_20px_rgba(16,244,128,0.3)] hover:shadow-[0_0_30px_rgba(16,244,128,0.5)]">
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  REGISTER NOW
+                  <ArrowRight
+                    size={18}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
+                </span>
+                <div className="absolute inset-0 bg-white/40 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out skew-y-12"></div>
+              </button>
+            </a>
           </motion.div>
         </div>
       </div>

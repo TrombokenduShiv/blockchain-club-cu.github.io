@@ -46,6 +46,8 @@ export const Connect = () => {
               key={i}
               href={item.href}
               className={`flex flex-col items-center justify-center p-6 border border-black/10 dark:border-gray-200 dark:border-white/10 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 group ${item.color}`}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <item.icon
                 size={32}

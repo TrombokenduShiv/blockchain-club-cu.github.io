@@ -60,9 +60,15 @@ export const Navbar = () => {
                   {item}
                 </button>
               ))}
-              <button className="border border-[#10F480] text-emerald-600 dark:text-[#10F480] hover:bg-[#10F480] hover:text-[#1C1C1C] dark:hover:text-[#1C1C1C] px-4 py-2 rounded transition-all duration-300 font-bold">
-                Join Community
-              </button>
+              <a
+                href="https://chat.whatsapp.com/CXY53ovXAas7bWBfwRnEsa?utm_source=website"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="border border-[#10F480] text-emerald-600 dark:text-[#10F480] hover:bg-[#10F480] hover:text-[#1C1C1C] dark:hover:text-[#1C1C1C] px-4 py-2 rounded transition-all duration-300 font-bold">
+                  Join Community
+                </button>
+              </a>
 
               {/* Theme Toggle Button */}
               <div className="ml-2">

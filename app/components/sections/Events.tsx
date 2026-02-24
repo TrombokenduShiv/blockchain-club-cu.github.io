@@ -105,7 +105,11 @@ export const Events = () => {
                     </span>
                   </div>
 
-                  <a href={event.link} >
+                  <a
+                    href={event.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <button className="w-full py-3 border border-gray-600 dark:border-white/20 text-gray-900 dark:text-white font-mono text-sm hover:bg-[#10F480] hover:text-black dark:hover:text-[#1C1C1C] hover:border-[#10F480] transition-all duration-300 rounded">
                       REGISTER NOW
                     </button>
