@@ -68,3 +68,19 @@ export const ABOUT_CARDS = [
       'Network with industry leaders, alumni, and like-minded peers passionate about decentralization.',
   },
 ];
+
+export const GalleryImages = [
+  'gallery/0bfc3083-e3f7-4f50-831d-fdaecc6b4fdc.webp',
+  'gallery/1b4023de-b987-4e99-abb1-8fb1dbd9d70b.webp',
+  'gallery/1fda76f2-8df9-4426-85e1-bc4215352890.webp',
+  'gallery/2ffa42aa-8a70-4fdd-b2dd-bf19247091db.webp',
+  'gallery/004d8d3d-3685-4855-b2db-0d50f34d23c0.webp',
+  'gallery/04e64f1d-7d13-4fd4-8568-6435a2a7e30e.webp',
+  'gallery/5ce602dd-9cf2-4ed9-a664-17b0bc7c9e7a.webp',
+  'gallery/5dc514e5-ea03-4147-8552-7db1a183d25e.webp',
+  'gallery/9b4e6c29-79a3-4b6e-a807-49fdfeb9e54c.webp',
+  'gallery/18b95b48-3231-49a7-bee1-a51d6dea42f1.webp',
+  'gallery/0186de70-55e7-4f28-b2f3-3d9bb953e365.webp',
+  'gallery/500aa670-037b-49a2-9ef0-e1688c8e9f88.webp',
+  'gallery/b79f17e3-b5c8-4013-a891-6bf23911e88f.webp'
+];

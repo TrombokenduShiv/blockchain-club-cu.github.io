@@ -5,6 +5,7 @@ import { About } from './components/sections/About';
 import { Connect } from './components/sections/Contact';
 import { Events } from './components/sections/Events';
 import { Footer } from './components/sections/Footer';
+import Gallery from './components/sections/Gallery';
 import { Hero } from './components/sections/Hero';
 import { Team } from './components/sections/Team';
 
@@ -15,6 +16,7 @@ export default function App() {
       <Hero />
       <About />
       <Events />
+      <Gallery />
       <Team />
       <Connect />
       <Footer />
