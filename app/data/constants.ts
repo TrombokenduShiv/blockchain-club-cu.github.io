@@ -15,8 +15,8 @@ interface MemberItem {
   id: number;
   name: string;
   role: string;
-  image: string;
-  linkedin: string;
+  image?: string;
+  linkedin?: string;
 }
 
 interface AboutItem {
@@ -25,13 +25,118 @@ interface AboutItem {
 }
 
 export const TEAM_MEMBERS: MemberItem[] = [
-  // {
-  //   id: 1,
-  //   name: 'Alex Johnson',
-  //   role: 'President',
-  //   image: '/api/placeholder/400/400', // Replace with real image path
-  //   linkedin: '#',
-  // },
+  {
+    id: 1,
+    name: 'Aman Kumar Jha',
+    role: 'Secretary',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 2,
+    name: 'Anshul Soni',
+    role: 'Vice President',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 3,
+    name: 'Anurag',
+    role: 'Joint Secretary',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 4,
+    name: 'Rahul Raj Jaiswal',
+    role: 'Community Manager',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 5,
+    name: 'Bhumi',
+    role: 'Tech Lead',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 6,
+    name: 'Praveer Shrivastava',
+    role: 'Tech Lead',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 7,
+    name: 'Shubham Singh',
+    role: 'Social Media Lead',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 8,
+    name: 'Tripti Verma',
+    role: 'Documentation & Research Lead',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 9,
+    name: 'Ritika',
+    role: 'Documentation & Research Lead',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 10,
+    name: 'Shreya',
+    role: 'Documentation & Research Lead',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 11,
+    name: 'Solanky Jeeth Kumar',
+    role: 'Documentation & Research Lead',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 12,
+    name: 'Palak',
+    role: 'Anchor Lead',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 13,
+    name: 'Kanika Sehgal',
+    role: 'Anchor Lead',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 14,
+    name: 'Rohan Dhami',
+    role: 'Anchor Lead',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 15,
+    name: 'Pragya Sethi',
+    role: 'Anchor Lead',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
+  {
+    id: 16,
+    name: 'Aman Kumar',
+    role: 'Event Lead',
+    // image: '/api/placeholder/400/400',
+    // linkedin: '#',
+  },
 ];
 
 export const EVENTS: EventItem[] = [
@@ -43,8 +148,7 @@ export const EVENTS: EventItem[] = [
     date: 'February 26, 2026',
     time: '9:00 AM - 4:30 PM',
     location: 'B3, Seminar Hall',
-    description:
-      `Learn how real-world industry problems can be turned into scalable startup
+    description: `Learn how real-world industry problems can be turned into scalable startup
 ideas using AI and Blockchain technologies.`,
     status: 'Upcoming',
     link: 'https://docs.google.com/forms/d/e/1FAIpQLSeL0Fw4Mo3nC54h2HQJEQNrVeHbKJp6yqog3waiyMY78ouDQA/viewform',
@@ -82,5 +186,5 @@ export const GalleryImages = [
   'gallery/18b95b48-3231-49a7-bee1-a51d6dea42f1.webp',
   'gallery/0186de70-55e7-4f28-b2f3-3d9bb953e365.webp',
   'gallery/500aa670-037b-49a2-9ef0-e1688c8e9f88.webp',
-  'gallery/b79f17e3-b5c8-4013-a891-6bf23911e88f.webp'
+  'gallery/b79f17e3-b5c8-4013-a891-6bf23911e88f.webp',
 ];

@@ -51,7 +51,7 @@ export const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8 font-mono text-sm">
-              {['About', 'Events', 'Team', 'Contact'].map((item) => (
+              {['About', 'Events', 'Gallery', 'Team', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
