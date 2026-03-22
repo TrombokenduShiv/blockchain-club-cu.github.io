@@ -60,7 +60,7 @@ export const Hero = () => {
             className="flex flex-wrap items-center justify-center gap-4 mt-8 w-full"
           >
             <a
-              href="https://chat.whatsapp.com/CXY53ovXAas7bWBfwRnEsa?utm_source=website"
+              href="https://cuintranet.in/join-now"
               target="_blank"
               rel="noopener noreferrer"
             >

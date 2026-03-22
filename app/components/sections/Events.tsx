@@ -58,7 +58,9 @@ export const Events = () => {
               community to be the first to know when we launch!
             </p>
             <a
-              href="#contact" // Or link to your Discord/WhatsApp
+              href="https://chat.whatsapp.com/CXY53ovXAas7bWBfwRnEsa?utm_source=website"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => {
                  confetti({
                    particleCount: 100,
