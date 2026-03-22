@@ -31,22 +31,45 @@ export const Chatbot = () => {
     scrollToBottom();
   }, [messages]);
 
-  const handleOptionClick = (option: string) => {
+  const handleOptionClick = (text: string) => {
     // Add user message immediately
-    const userMsg: Message = { id: Date.now().toString(), sender: 'user', text: option };
+    const userMsg: Message = { id: Date.now().toString(), sender: 'user', text };
     setMessages((prev) => [...prev, userMsg]);
 
     // Process bot response asynchronously to feel like real chat
     setTimeout(() => {
       let botResponse: Message;
+      const normalized = text.toLowerCase();
 
-      if (option === 'What is this club?') {
+      // Quick helper for event dates
+      const isEventActive = (e: any) => {
+        const eventDate = new Date(e.date);
+        if (isNaN(eventDate.getTime())) return true;
+        eventDate.setHours(23, 59, 59, 999);
+        return eventDate.getTime() >= Date.now();
+      };
+
+      // 1. Club Info Match
+      if (
+        normalized === 'what is this club?' ||
+        normalized.includes('about') ||
+        normalized.includes('who are you') ||
+        (normalized.includes('what') && normalized.includes('club'))
+      ) {
         botResponse = {
           id: (Date.now() + 1).toString(),
           sender: 'bot',
           text: 'Blockchain Club CU is a student-led community focused on learning Blockchain and Web3 from fundamentals to real-world use.',
         };
-      } else if (option === 'Contact Info') {
+      } 
+      // 2. Contact Info Match
+      else if (
+        normalized === 'contact info' ||
+        normalized.includes('contact') ||
+        normalized.includes('whatsapp') ||
+        normalized.includes('email') ||
+        normalized.includes('reach')
+      ) {
         botResponse = {
           id: (Date.now() + 1).toString(),
           sender: 'bot',
@@ -64,52 +87,98 @@ export const Chatbot = () => {
             </span>
           ),
         };
-      } else if (option === 'Active Events') {
-        // Dynamically grab events logic (no backend)
-        const upcomingEvents = EVENTS.filter((event) => {
-          const eventDate = new Date(event.date);
-          if (isNaN(eventDate.getTime())) return true;
-          eventDate.setHours(23, 59, 59, 999);
-          return eventDate.getTime() >= Date.now();
+      } 
+      // 3. Event and Keyword Match
+      else {
+        // Find if the user typed specific words matching an event title
+        const inputWords = normalized.split(/[\s,.-]+/).filter(w => w.length > 3 && w !== 'event' && w !== 'events' && w !== 'club');
+        let matchedEvent = EVENTS.find((e) => {
+          const titleLower = e.title.toLowerCase();
+          return inputWords.some((w) => titleLower.includes(w));
         });
 
-        if (upcomingEvents.length > 0) {
+        if (matchedEvent) {
+          // Specific event found!
+          const active = isEventActive(matchedEvent);
           botResponse = {
             id: (Date.now() + 1).toString(),
             sender: 'bot',
             text: (
-              <div className="space-y-4">
-                <p>We have {upcomingEvents.length} active event(s):</p>
-                {upcomingEvents.map((e) => (
-                  <div key={e.id} className="p-3 border border-gray-200 dark:border-white/10 rounded-lg bg-white dark:bg-white/5 shadow-sm">
-                    <h4 className="font-bold text-gray-900 dark:text-white mb-1 font-mono">{e.title}</h4>
-                    <p className="text-xs text-gray-600 dark:text-gray-400 mb-3">{e.description}</p>
+              <div className="space-y-3">
+                <p>{active ? "Here is the active event you asked about:" : "Here is the past event you asked about:"}</p>
+                <div className="p-3 border border-gray-200 dark:border-white/10 rounded-lg bg-white dark:bg-white/5 shadow-sm">
+                  <div className="flex items-start justify-between mb-2">
+                    <h4 className="font-bold text-gray-900 dark:text-white font-mono text-sm leading-tight pr-2">{matchedEvent.title}</h4>
+                    {!active && <span className="shrink-0 text-[10px] bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-2 py-0.5 rounded">Past</span>}
+                  </div>
+                  <p className="text-[11px] text-emerald-600 dark:text-[#10F480] font-mono mb-2">{matchedEvent.date}</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">{matchedEvent.description}</p>
+                  {active && (
                     <a
-                      href={e.link}
+                      href={matchedEvent.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block w-full text-center px-4 py-2 bg-[#10F480] text-[#1C1C1C] text-xs font-bold rounded hover:bg-[#0dd66f] transition-colors"
+                      className="mt-3 inline-block w-full text-center px-4 py-2 bg-[#10F480] text-[#1C1C1C] text-xs font-bold rounded hover:bg-[#0dd66f] transition-colors"
                     >
                       Register for the Event
                     </a>
-                  </div>
-                ))}
+                  )}
+                </div>
               </div>
             ),
           };
+        } else if (normalized.includes('event')) {
+          // General "event" query without specific titles
+          const wantsPast = normalized.includes('past') || normalized.includes('previous');
+          const filteredEvents = EVENTS.filter(e => isEventActive(e) === !wantsPast);
+
+          if (filteredEvents.length > 0) {
+            botResponse = {
+              id: (Date.now() + 1).toString(),
+              sender: 'bot',
+              text: (
+                <div className="space-y-4">
+                  <p>We found {filteredEvents.length} {wantsPast ? "past" : "active"} event(s):</p>
+                  {filteredEvents.map((e) => (
+                    <div key={e.id} className="p-3 border border-gray-200 dark:border-white/10 rounded-lg bg-white dark:bg-white/5 shadow-sm">
+                      <div className="flex items-start justify-between mb-2">
+                        <h4 className="font-bold text-gray-900 dark:text-white font-mono text-sm leading-tight pr-2">{e.title}</h4>
+                        {wantsPast && <span className="shrink-0 text-[10px] bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-2 py-0.5 rounded">Past</span>}
+                      </div>
+                      <p className="text-[11px] text-emerald-600 dark:text-[#10F480] font-mono mb-2">{e.date}</p>
+                      <p className="text-xs text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">{e.description}</p>
+                      {!wantsPast && (
+                        <a
+                          href={e.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block w-full text-center px-4 py-2 bg-[#10F480] text-[#1C1C1C] text-xs font-bold rounded hover:bg-[#0dd66f] transition-colors"
+                        >
+                          Register Here
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ),
+            };
+          } else {
+            botResponse = {
+              id: (Date.now() + 1).toString(),
+              sender: 'bot',
+              text: wantsPast 
+                ? "We don't have any past events listed currently." 
+                : "We are currently brewing something special... No active events right now. Check back soon!",
+            };
+          }
         } else {
-          botResponse = {
-            id: (Date.now() + 1).toString(),
-            sender: 'bot',
-            text: 'We are currently brewing something special... No active events right now. Check back soon!',
-          };
+           // Completely unknown query
+           botResponse = {
+             id: (Date.now() + 1).toString(),
+             sender: 'bot',
+             text: "I'm not exactly sure about that! Try asking about our 'events', 'past events', 'contact info', or 'about the club', or simply use the quick buttons below.",
+           }
         }
-      } else {
-         botResponse = {
-           id: (Date.now() + 1).toString(),
-           sender: 'bot',
-           text: "I'm a simple bot and don't understand custom questions yet! Please use the buttons below.",
-         }
       }
 
       setMessages((prev) => [...prev, botResponse]);
