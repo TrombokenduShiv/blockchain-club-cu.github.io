@@ -53,9 +53,8 @@ export const Events = () => {
               New Events Coming Soon...
             </h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-md mb-8">
-              We are currently brewing something special for the next semester.
-              Join our WhatsApp community to be the first to know when we
-              launch!
+              We are currently brewing something special. Join our WhatsApp
+              community to be the first to know when we launch!
             </p>
             <a
               href="#contact" // Or link to your Discord/WhatsApp
