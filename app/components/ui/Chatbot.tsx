@@ -287,8 +287,9 @@ export const Chatbot = () => {
 
         {/* Toggle FAB */}
         <motion.button
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.05, rotate: [0, -10, 10, -10, 10, 0] }}
           whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.4 }}
           onClick={() => setIsOpen(!isOpen)}
           className="w-14 h-14 bg-[#10F480] text-[#1C1C1C] rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(16,244,128,0.4)] flex items-center justify-center transition-shadow relative"
         >
