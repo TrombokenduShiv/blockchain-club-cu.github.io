@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (pointer: fine) {
-  body, a, button, input, textarea, select {
-    cursor: none !important;
-  }
-}
-
 .text-gradient {
   background-color: #1c1c1c;
   color: #ffffff;

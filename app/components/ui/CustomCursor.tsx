@@ -17,11 +17,7 @@ export const CustomCursor = () => {
 
     const mouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
-      if (!isVisible) setIsVisible(true);
     };
-
-    const mouseLeave = () => setIsVisible(false);
-    const mouseEnter = () => setIsVisible(true);
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -31,24 +27,20 @@ export const CustomCursor = () => {
         target.closest('button') ||
         target.closest('a')
       ) {
-        setIsHovering(true);
+        setIsVisible(true);
       } else {
-        setIsHovering(false);
+        setIsVisible(false);
       }
     };
 
     window.addEventListener('mousemove', mouseMove);
     window.addEventListener('mouseover', handleMouseOver);
-    document.addEventListener('mouseleave', mouseLeave);
-    document.addEventListener('mouseenter', mouseEnter);
 
     return () => {
       window.removeEventListener('mousemove', mouseMove);
       window.removeEventListener('mouseover', handleMouseOver);
-      document.removeEventListener('mouseleave', mouseLeave);
-      document.removeEventListener('mouseenter', mouseEnter);
     };
-  }, [isVisible]);
+  }, []);
 
   if (!isDesktop) return null;
 

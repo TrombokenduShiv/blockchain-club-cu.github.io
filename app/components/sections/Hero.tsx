@@ -4,16 +4,6 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { InteractiveGrid } from '../ui/InteractiveGrid';
 import { ScrambleText } from '../ui/ScrambleText';
-import dynamic from 'next/dynamic';
-
-const Spline = dynamic(() => import('@splinetool/react-spline'), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-12 h-12 border-4 border-[#10F480]/20 border-t-[#10F480] rounded-full animate-spin"></div>
-    </div>
-  ),
-});
 
 export const Hero = () => {
   return (
@@ -86,14 +76,20 @@ export const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Right Column: 3D Spline Interaction */}
+          {/* Right Column: 3D Spline Interaction (Iframe Embed avoids Next.js buffer crash) */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-            className="w-full h-[350px] sm:h-[450px] lg:h-[600px] relative mt-8 lg:mt-0 right-0 z-0 pointer-events-auto cursor-grab active:cursor-grabbing"
+            className="w-full h-[350px] sm:h-[450px] lg:h-[600px] relative mt-8 lg:mt-0 right-0 z-0 pointer-events-auto"
           >
-            <Spline scene="https://prod.spline.design/kZIGLNwjB4iEXgjY/scene.splinecode" />
+            <iframe 
+              src="https://my.spline.design/kZIGLNwjB4iEXgjY/" 
+              frameBorder="0" 
+              width="100%" 
+              height="100%"
+              className="w-full h-full rounded-xl overflow-hidden shadow-2xl mix-blend-lighten"
+            ></iframe>
           </motion.div>
 
         </div>
