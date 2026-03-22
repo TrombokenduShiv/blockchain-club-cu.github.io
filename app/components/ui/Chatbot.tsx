@@ -12,12 +12,27 @@ type Message = {
 };
 
 export const Chatbot = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
       sender: 'bot',
-      text: 'Hi there! I am the BCCU Assistant. How can I help you today?',
+      text: (
+        <div className="space-y-3">
+          <p>
+            🚀 <strong>Welcome to Blockchain Club CU!</strong> I am your BCCU Assistant. 
+            I can help you explore our active events, get our contact info, or learn more about our mission! 
+          </p>
+          <a
+            href="https://cuintranet.in/join-now"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block w-full text-center px-4 py-2 bg-[#10F480] text-[#1C1C1C] text-xs font-bold rounded hover:bg-[#0dd66f] transition-colors"
+          >
+            Register Now
+          </a>
+        </div>
+      ),
     },
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -173,10 +188,16 @@ export const Chatbot = () => {
           }
         } else {
            // Completely unknown query
+           const fallbacks = [
+             <span>Oops! 😅 I didn't quite catch that. I'm trained to help you with our <strong>Active Events</strong>, <strong>Contact Info</strong>, or learning <strong>About the Club</strong>. What would you like to explore?</span>,
+             <span>Hmm, that's outside my current knowledge base! 🤖 However, I can easily share our <strong>Contact Details</strong>, list our <strong>Upcoming Events</strong>, or tell you <strong>What the Club is all about</strong>. Just tap a button below!</span>,
+             <span>My circuits are buzzing, but I'm still learning! ⚡ For now, I'm great at finding <strong>Event Details</strong>, giving you our <strong>WhatsApp Link</strong>, or explaining our <strong>Club's Mission</strong>. Which of those sounds good?</span>
+           ];
+           
            botResponse = {
              id: (Date.now() + 1).toString(),
              sender: 'bot',
-             text: "I'm not exactly sure about that! Try asking about our 'events', 'past events', 'contact info', or 'about the club', or simply use the quick buttons below.",
+             text: fallbacks[Math.floor(Math.random() * fallbacks.length)],
            }
         }
       }
