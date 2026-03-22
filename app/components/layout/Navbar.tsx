@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { X, Menu } from 'lucide-react';
 import { useState } from 'react';
 import { ThemeToggle } from '../ui/ThemeToggle'; // Make sure this path matches where you put ThemeToggle
+import confetti from 'canvas-confetti';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,9 +66,20 @@ export const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className="border border-[#10F480] text-emerald-600 dark:text-[#10F480] hover:bg-[#10F480] hover:text-[#1C1C1C] dark:hover:text-[#1C1C1C] px-4 py-2 rounded transition-all duration-300 font-bold">
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    confetti({
+                      particleCount: 100,
+                      spread: 70,
+                      origin: { y: 0.6 },
+                      colors: ['#10F480', '#ffffff', '#000000']
+                    });
+                  }}
+                  className="border border-[#10F480] text-emerald-600 dark:text-[#10F480] hover:bg-[#10F480] hover:text-[#1C1C1C] dark:hover:text-[#1C1C1C] px-4 py-2 rounded transition-all duration-300 font-bold">
                   Join Community
-                </button>
+                </motion.button>
               </a>
 
               {/* Theme Toggle Button */}
@@ -107,9 +119,20 @@ export const Navbar = () => {
                 {item}
               </button>
             ))}
-            <button className="text-[#10F480] block w-full text-left px-3 py-2 rounded-md text-base font-bold">
+            <motion.button 
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                confetti({
+                  particleCount: 100,
+                  spread: 70,
+                  origin: { y: 0.6 },
+                  colors: ['#10F480', '#ffffff', '#000000']
+                });
+                window.open("https://chat.whatsapp.com/CXY53ovXAas7bWBfwRnEsa?utm_source=website", "_blank");
+              }}
+              className="text-[#10F480] block w-full text-left px-3 py-2 rounded-md text-base font-bold">
               Join Community
-            </button>
+            </motion.button>
           </div>
         </motion.div>
       )}

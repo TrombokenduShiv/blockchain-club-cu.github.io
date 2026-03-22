@@ -7,6 +7,7 @@ import { EVENTS } from '@/app/data/constants';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
+import confetti from 'canvas-confetti';
 
 export const Events = () => {
   const { theme } = useTheme();
@@ -58,6 +59,14 @@ export const Events = () => {
             </p>
             <a
               href="#contact" // Or link to your Discord/WhatsApp
+              onClick={() => {
+                 confetti({
+                   particleCount: 100,
+                   spread: 70,
+                   origin: { y: 0.6 },
+                   colors: ['#10F480', '#ffffff', '#000000']
+                 });
+              }}
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#10F480]/10 text-emerald-600 dark:text-[#10F480] border border-[#10F480]/20 rounded hover:bg-[#10F480] hover:text-black dark:hover:text-[#1C1C1C] transition-all duration-300 font-mono font-bold text-sm"
             >
               <Bell size={16} />
@@ -72,8 +81,9 @@ export const Events = () => {
                 key={event.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -10, scale: 1.02 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
+                transition={{ type: "spring", stiffness: 300, delay: idx * 0.1 }}
                 className="group relative border border-gray-200 dark:border-white/10 rounded-xl bg-gray-50 dark:bg-white/5 hover:border-emerald-500 dark:hover:border-[#10F480]/50 hover:bg-white dark:hover:bg-white/10 transition-colors duration-300 shadow-sm dark:shadow-none"
               >
                 <div className="p-6">
@@ -118,9 +128,12 @@ export const Events = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <button className="w-full py-3 border border-gray-600 dark:border-white/20 text-gray-900 dark:text-white font-mono text-sm hover:bg-[#10F480] hover:text-black dark:hover:text-[#1C1C1C] hover:border-[#10F480] transition-all duration-300 rounded">
+                    <motion.button 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full py-3 border border-gray-600 dark:border-white/20 text-gray-900 dark:text-white font-mono text-sm hover:bg-[#10F480] hover:text-black dark:hover:text-[#1C1C1C] hover:border-[#10F480] transition-colors duration-300 rounded">
                       REGISTER NOW
-                    </button>
+                    </motion.button>
                   </a>
                 </div>
               </motion.div>
