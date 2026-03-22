@@ -105,22 +105,15 @@ export const Events = () => {
                     </span>
                   </div>
 
-                  <button
-                    onClick={() => {
-                      if (event.formFields && event.formFields.length > 0) {
-                        window.dispatchEvent(
-                          new CustomEvent('openEventPopup', {
-                            detail: { eventId: event.id },
-                          }),
-                        );
-                      } else {
-                        window.open(event.link, '_blank');
-                      }
-                    }}
-                    className="w-full py-3 border border-gray-600 dark:border-white/20 text-gray-900 dark:text-white font-mono text-sm hover:bg-[#10F480] hover:text-black dark:hover:text-[#1C1C1C] hover:border-[#10F480] transition-all duration-300 rounded"
+                  <a
+                    href={event.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    REGISTER NOW
-                  </button>
+                    <button className="w-full py-3 border border-gray-600 dark:border-white/20 text-gray-900 dark:text-white font-mono text-sm hover:bg-[#10F480] hover:text-black dark:hover:text-[#1C1C1C] hover:border-[#10F480] transition-all duration-300 rounded">
+                      REGISTER NOW
+                    </button>
+                  </a>
                 </div>
               </motion.div>
             ))}
