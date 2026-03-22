@@ -50,7 +50,7 @@ export const Navbar = () => {
       transition={{ duration: 0.3, ease: 'easeInOut' }}
       className="fixed top-0 left-0 right-0 z-50"
     >
-      <nav className="bg-white/80 dark:bg-[#1C1C1C]/80 backdrop-blur-md border-b border-gray-200 dark:border-white/10 transition-colors duration-300">
+      <nav className="bg-white/40 dark:bg-[#1C1C1C]/40 backdrop-blur-xl border-b border-gray-200/50 dark:border-white/10 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo Section */}
@@ -134,7 +134,7 @@ export const Navbar = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="md:hidden bg-white dark:bg-[#1C1C1C] border-b border-gray-200 dark:border-white/10"
+            className="md:hidden bg-white/80 dark:bg-[#1C1C1C]/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-white/10 shadow-xl"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 font-mono">
               {['About', 'Events', 'Team', 'Contact'].map((item) => (
