@@ -18,8 +18,17 @@ export const Events = () => {
 
   if (!mounted) return null;
 
-  // Check if events exist
-  const hasEvents = EVENTS && EVENTS.length > 0;
+  // Filter for events whose date is today or in the future
+  const upcomingEvents = EVENTS.filter((event) => {
+    // Attempt to parse the date. If failed, it might be an invalid format, keep it visible safely or hide.
+    // 'February 26, 2026' parses correctly in JS Date.
+    const eventDate = new Date(event.date);
+    if (isNaN(eventDate.getTime())) return true; // fallback if date format is weird
+    eventDate.setHours(23, 59, 59, 999); // end of the day
+    return eventDate.getTime() >= Date.now();
+  });
+  
+  const hasEvents = upcomingEvents.length > 0;
 
   return (
     <section
@@ -41,7 +50,7 @@ export const Events = () => {
               <CalendarOff size={32} />
             </div>
             <h3 className="text-xl md:text-2xl font-bold font-mono text-gray-900 dark:text-white mb-2">
-              No Upcoming Events
+              New Events Coming Soon...
             </h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-md mb-8">
               We are currently brewing something special for the next semester.
@@ -59,7 +68,7 @@ export const Events = () => {
         ) : (
           /* ---------------- EVENTS GRID ---------------- */
           <div className="grid gap-6 md:grid-cols-2">
-            {EVENTS.map((event, idx) => (
+            {upcomingEvents.map((event, idx) => (
               <motion.div
                 key={event.id}
                 initial={{ opacity: 0, y: 20 }}
