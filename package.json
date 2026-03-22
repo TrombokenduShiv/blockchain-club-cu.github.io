@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@splinetool/react-spline": "^4.1.0",
+    "@splinetool/runtime": "^1.12.70",
     "canvas-confetti": "^1.9.4",
     "framer-motion": "^11.0.8",
     "googleapis": "^171.4.0",
