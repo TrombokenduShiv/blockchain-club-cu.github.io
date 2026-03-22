@@ -47,7 +47,7 @@ export const Team = () => {
   // Auto-advance
   useEffect(() => {
     if (!hasTeam || isPaused) return;
-    const timer = setInterval(next, 3500);
+    const timer = setInterval(next, 2000); // 2 seconds per slide
     return () => clearInterval(timer);
   }, [hasTeam, isPaused, next]);
 
