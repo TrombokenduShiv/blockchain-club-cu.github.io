@@ -141,6 +141,13 @@ export const EVENTS: EventItem[] = [
 ideas using AI and Blockchain technologies.`,
     status: 'Upcoming',
     link: 'https://docs.google.com/forms/d/e/1FAIpQLSeL0Fw4Mo3nC54h2HQJEQNrVeHbKJp6yqog3waiyMY78ouDQA/viewform',
+    googleSheetId: 'test-sheet-id',
+    formFields: [
+      { name: 'Full Name', type: 'text', required: true },
+      { name: 'Email', type: 'email', required: true },
+      { name: 'Roll No', type: 'text', required: true },
+      { name: 'Branch', type: 'text', required: true },
+    ],
   },
 ];
 
