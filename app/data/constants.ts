@@ -1,15 +1,4 @@
-interface EventItem {
-  id: number;
-  title: string;
-  imageURL: string;
-  imageDarkURL: string;
-  date: string;
-  time: string;
-  location: string;
-  description: string;
-  status: string;
-  link: string;
-}
+import { EventItem } from '@/app/types';
 
 interface MemberItem {
   id: number;
