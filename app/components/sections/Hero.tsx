@@ -76,20 +76,48 @@ export const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Right Column: 3D Spline Interaction (Iframe Embed avoids Next.js buffer crash) */}
+          {/* Right Column: 3D Animated Blockchain Cube */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-            className="w-full h-[350px] sm:h-[450px] lg:h-[600px] relative mt-8 lg:mt-0 right-0 z-0 pointer-events-auto"
+            className="w-full h-[350px] sm:h-[450px] lg:h-[600px] flex items-center justify-center relative mt-8 lg:mt-0 right-0 z-0 pointer-events-none"
+            style={{ perspective: 1000 }}
           >
-            <iframe 
-              src="https://my.spline.design/kZIGLNwjB4iEXgjY/" 
-              frameBorder="0" 
-              width="100%" 
-              height="100%"
-              className="w-full h-full rounded-xl overflow-hidden shadow-2xl mix-blend-lighten"
-            ></iframe>
+            <motion.div
+              animate={{
+                rotateX: [0, 360],
+                rotateY: [0, 360],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="relative w-[200px] h-[200px]"
+              style={{ transformStyle: 'preserve-3d' }}
+            >
+              {[...Array(6)].map((_, index) => (
+                <div
+                  key={index}
+                  className="absolute w-full h-full border border-[#10F480]/40 bg-[#10F480]/5 backdrop-blur-md shadow-[0_0_30px_rgba(16,244,128,0.15)] flex items-center justify-center"
+                  style={{
+                    transform: `
+                      ${index === 0 ? 'translateZ(100px)' : ''}
+                      ${index === 1 ? 'rotateY(180deg) translateZ(100px)' : ''}
+                      ${index === 2 ? 'rotateY(90deg) translateZ(100px)' : ''}
+                      ${index === 3 ? 'rotateY(-90deg) translateZ(100px)' : ''}
+                      ${index === 4 ? 'rotateX(90deg) translateZ(100px)' : ''}
+                      ${index === 5 ? 'rotateX(-90deg) translateZ(100px)' : ''}
+                    `
+                  }}
+                >
+                  <div className="w-1/2 h-1/2 border border-[#10F480]/30 rounded-full flex items-center justify-center">
+                     <div className="w-2 h-2 bg-[#10F480]/60 rounded-full shadow-[0_0_10px_rgba(16,244,128,1)]" />
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
 
         </div>
