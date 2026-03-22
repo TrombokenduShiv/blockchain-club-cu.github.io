@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
+import { SpotlightCard } from '../ui/SpotlightCard';
 
 export const Events = () => {
   const { theme } = useTheme();
@@ -86,9 +87,9 @@ export const Events = () => {
                 whileHover={{ y: -10, scale: 1.02 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 300, delay: idx * 0.1 }}
-                className="group relative border border-gray-200 dark:border-white/10 rounded-xl bg-gray-50 dark:bg-white/5 hover:border-emerald-500 dark:hover:border-[#10F480]/50 hover:bg-white dark:hover:bg-white/10 transition-colors duration-300 shadow-sm dark:shadow-none"
               >
-                <div className="p-6">
+                <SpotlightCard className="h-full">
+                  <div className="p-6 flex flex-col h-full">
                   <div className="flex justify-between items-start mb-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10F480]/10 text-emerald-600 dark:text-[#10F480] text-xs font-mono">
                       <Calendar size={12} />
@@ -137,7 +138,8 @@ export const Events = () => {
                       REGISTER NOW
                     </motion.button>
                   </a>
-                </div>
+                  </div>
+                </SpotlightCard>
               </motion.div>
             ))}
           </div>
