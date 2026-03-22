@@ -13,10 +13,15 @@ type Message = {
 
 export const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showFAB, setShowFAB] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
-    // Wait for the Preloader animation to complete before popping up the chatbot automatically
-    const timer = setTimeout(() => setIsOpen(true), 3000);
+    // Wait for the Preloader animation to complete before showing FAB and Tooltip
+    const timer = setTimeout(() => {
+      setShowFAB(true);
+      setShowTooltip(true);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
   const [messages, setMessages] = useState<Message[]>([
@@ -223,10 +228,35 @@ export const Chatbot = () => {
 
   return (
     <>
-      <div className="fixed bottom-6 right-6 z-[100]">
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
+      {showFAB && (
+        <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
+          {/* Greeting Tooltip */}
+          <AnimatePresence>
+            {showTooltip && !isOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.9 }}
+                className="absolute bottom-20 right-0 mb-2 px-4 py-3 bg-white dark:bg-[#1C1C1C] text-gray-900 dark:text-white text-sm font-bold font-mono rounded-2xl shadow-xl border border-gray-200 dark:border-white/10 whitespace-nowrap flex items-center"
+              >
+                Hi! How can I help you? 👋
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowTooltip(false);
+                  }}
+                  className="ml-3 text-gray-400 hover:text-gray-600 dark:hover:text-white"
+                >
+                  <X size={14} />
+                </button>
+                <div className="absolute -bottom-2 right-5 w-4 h-4 bg-white dark:bg-[#1C1C1C] border-b border-r border-gray-200 dark:border-white/10 rotate-45"></div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -317,7 +347,10 @@ export const Chatbot = () => {
           whileHover={{ scale: 1.05, rotate: [0, -10, 10, -10, 10, 0] }}
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.4 }}
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            setIsOpen(!isOpen);
+            setShowTooltip(false); // Hide tooltip once interacted
+          }}
           className="w-14 h-14 bg-[#10F480] text-[#1C1C1C] rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(16,244,128,0.4)] flex items-center justify-center transition-shadow relative"
         >
           <AnimatePresence mode="wait">
@@ -344,7 +377,8 @@ export const Chatbot = () => {
             )}
           </AnimatePresence>
         </motion.button>
-      </div>
+        </div>
+      )}
     </>
   );
 };
