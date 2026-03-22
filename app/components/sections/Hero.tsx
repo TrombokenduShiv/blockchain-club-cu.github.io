@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { InteractiveGrid } from '../ui/InteractiveGrid';
 import { ScrambleText } from '../ui/ScrambleText';
 
 export const Hero = () => {
@@ -11,6 +12,7 @@ export const Hero = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <InteractiveGrid />
 
         {/* 2. FIX: Gradient now fades to WHITE in light mode and BLACK in dark mode */}
         <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white dark:from-[#1C1C1C] dark:via-transparent dark:to-[#1C1C1C] pointer-events-none"></div>
