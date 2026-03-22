@@ -12,7 +12,13 @@ type Message = {
 };
 
 export const Chatbot = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    // Wait for the Preloader animation to complete before popping up the chatbot automatically
+    const timer = setTimeout(() => setIsOpen(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
